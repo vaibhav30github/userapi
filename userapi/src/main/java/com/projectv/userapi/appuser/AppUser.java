@@ -2,6 +2,7 @@ package com.projectv.userapi.appuser;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -45,8 +46,8 @@ public class AppUser implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
-		return Collections.singletonList(authority);
+		Set<SimpleGrantedAuthority> authority = appUserRole.getGrantedAuthorities();
+		return authority;
 	}
 
 	@Override

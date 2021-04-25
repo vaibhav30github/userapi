@@ -13,12 +13,12 @@ public class EmployeeController {
 	//hasRole('ROLE_') hasAnyRole('ROLE_') hasAuthority('permission') hasAnyAuthority('permission')
 	
 	@GetMapping(value = "/getemployee/user")
-	@PreAuthorize("hasAnyAuthority('USER')") 
+	@PreAuthorize("hasAnyRole('ROLE_USER')") 
 	public String getUserDetails() {		
 		return "This is User";
 	}
 	@GetMapping(value = "/getemployee/admin")
-	@PreAuthorize("hasAnyAuthority('ADMIN')") 
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')") 
 	public String getAdminDetails() {		
 		return "This is Amdin";
 	}
