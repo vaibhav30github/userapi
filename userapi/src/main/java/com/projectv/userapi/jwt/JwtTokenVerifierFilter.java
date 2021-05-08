@@ -1,11 +1,11 @@
 package com.projectv.userapi.jwt;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -25,7 +24,6 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import lombok.experimental.var;
 
 public class JwtTokenVerifierFilter extends OncePerRequestFilter{
 
@@ -51,6 +49,12 @@ public class JwtTokenVerifierFilter extends OncePerRequestFilter{
 					.parseClaimsJws(token);
 			
 			Claims body = claimsJws.getBody();
+			Date currentDate = new Date();
+			if (body.getExpiration().before(currentDate)) {
+				response.addHeader("authorization", "Token expired");
+				 filterChain.doFilter(request, response);
+		            return;
+			}
 			
 			String userName = body.getSubject();
 			var authorities = (List<Map<String, String>>) body.get("authorities");

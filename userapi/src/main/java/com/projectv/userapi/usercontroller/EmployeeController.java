@@ -2,7 +2,10 @@ package com.projectv.userapi.usercontroller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +25,31 @@ public class EmployeeController {
 	public String getAdminDetails() {		
 		return "This is Amdin";
 	}
+	
+	@PutMapping(value = "/updateemployee/update")
+	@PreAuthorize("hasAuthority('UPDATE')")
+	public String updatetMethod() {
+		return "Update method working for this user";
+	}
+	
+	@DeleteMapping(value = "/deleteemployee/delete")
+	@PreAuthorize("hasAuthority('DELETE')")
+	public String deletetMethod() {
+		return "Delete method working for this user";
+	}
+	
+	@PostMapping(value = "/postemployee/post")
+	@PreAuthorize("hasAuthority('POST')")
+	public String postMethod() {
+		return "Post method working for this user";
+	}
+	
+	@GetMapping(value = "/getemployee/get")
+	@PreAuthorize("hasAuthority('GET')")
+	public String getMethod() {
+		return "Get method working for this user";
+	}
+	
+	
+	
 }

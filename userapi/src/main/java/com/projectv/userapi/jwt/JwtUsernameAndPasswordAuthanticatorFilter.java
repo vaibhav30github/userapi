@@ -2,6 +2,8 @@ package com.projectv.userapi.jwt;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
 import javax.servlet.FilterChain;
@@ -54,7 +56,7 @@ public class JwtUsernameAndPasswordAuthanticatorFilter extends UsernamePasswordA
 		         .setSubject(authResult.getName())
 		         .claim("authorities", authResult.getAuthorities())
 		         .setIssuedAt(new Date())
-		         .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusWeeks(2)))
+		         .setExpiration(java.sql.Date.valueOf(LocalDate.now().plus(1L, ChronoUnit.DAYS)))
 		         .signWith(Keys.hmacShaKeyFor(key.getBytes()))
 		         .compact();
 

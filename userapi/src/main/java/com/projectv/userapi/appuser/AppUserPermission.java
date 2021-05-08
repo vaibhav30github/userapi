@@ -1,10 +1,10 @@
 package com.projectv.userapi.appuser;
 
 public enum AppUserPermission {
-	GET("get"),
-	POST("post"),
-	UPDATE("update"),
-	DELETE("delete");
+	GET("GET"),
+	POST("POST"),
+	UPDATE("UPDATE"),
+	DELETE("DELETE");
 	
 	private final String permission;
 
