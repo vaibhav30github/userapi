@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor
 public class AppUserService implements UserDetailsService {
 	
 	private static final String USER_NOT_FOUND_MSG = "user with email %s not found";

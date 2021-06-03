@@ -22,8 +22,9 @@ public class EmployeeController {
 	}
 	@GetMapping(value = "/getemployee/admin")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')") 
-	public String getAdminDetails() {		
-		return "This is Amdin";
+	public Employee getAdminDetails() {
+		Employee employee = new Employee(10l, "Vaibhav Verma", "ADMIN", 9876543210l, "Noida sector 60");
+		return employee;
 	}
 	
 	@PutMapping(value = "/updateemployee/update")

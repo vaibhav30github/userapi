@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.projectv.userapi.appuser.AppUserService;
 import com.projectv.userapi.jwt.JwtTokenVerifierFilter;
@@ -27,6 +29,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	public WebSecurityConfig(com.projectv.userapi.appuser.AppUserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.appUserService = appUserService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+	@Bean
+	public WebMvcConfigurer crossConfigure() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("*/**")
+				.allowedMethods("GET", "PUT", "POST","DELETE")
+				.allowedHeaders("*")
+				.allowedOrigins("http://localhost:3000/");
+			}			
+		};
 	}
 
 	@Override
