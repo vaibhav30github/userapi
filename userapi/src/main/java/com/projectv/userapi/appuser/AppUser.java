@@ -29,13 +29,13 @@ public class AppUser implements UserDetails{
 	private String email;
 	private String password;
 	@Enumerated
-	private AppUserRole appUserRole;
+	private UserRole appUserRole;
 	private Boolean locked = false;
 	private Boolean enabled = true;	
 	
 	public AppUser() {}
 	
-	public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
+	public AppUser(String firstName, String lastName, String email, String password, UserRole appUserRole) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -112,11 +112,11 @@ public class AppUser implements UserDetails{
 		this.email = email;
 	}
 
-	public AppUserRole getAppUserRole() {
+	public UserRole getAppUserRole() {
 		return appUserRole;
 	}
 
-	public void setAppUserRole(AppUserRole appUserRole) {
+	public void setAppUserRole(UserRole appUserRole) {
 		this.appUserRole = appUserRole;
 	}
 
