@@ -1,6 +1,6 @@
 package com.projectv.userapi.registation;
 
-import com.projectv.userapi.appuser.AppUserRole;
+import com.projectv.userapi.appuser.UserRole;
 
 public class RegistrationRequest {
 
@@ -8,12 +8,12 @@ public class RegistrationRequest {
 	private String lastName;
 	private String email;
 	private String password;
-	private AppUserRole roll;
+	private UserRole roll;
 
 	public RegistrationRequest() {
 	}
 
-	public RegistrationRequest(String firstName, String lastName, String email, String password, AppUserRole roll) {
+	public RegistrationRequest(String firstName, String lastName, String email, String password, UserRole roll) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -54,11 +54,11 @@ public class RegistrationRequest {
 		return password;
 	}
 
-	public AppUserRole getRoll() {
+	public UserRole getRoll() {
 		return roll;
 	}
 
-	public void setRoll(AppUserRole roll) {
+	public void setRoll(UserRole roll) {
 		this.roll = roll;
 	}
 

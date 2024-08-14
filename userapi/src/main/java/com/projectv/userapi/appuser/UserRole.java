@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-public enum AppUserRole {
+public enum UserRole {
 	USER(Set.of(AppUserPermission.GET, AppUserPermission.POST)),
 	ADMIN(Set.of(AppUserPermission.GET, AppUserPermission.POST,AppUserPermission.UPDATE,AppUserPermission.DELETE));
 	
 	
 	private final Set<AppUserPermission> permissions;
 
-	private AppUserRole(Set<AppUserPermission> permissions) {
+	private UserRole(Set<AppUserPermission> permissions) {
 		this.permissions = permissions;
 	}
 

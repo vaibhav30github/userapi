@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.projectv.userapi.appuser.AppUser;
-import com.projectv.userapi.appuser.AppUserRole;
+import com.projectv.userapi.appuser.UserRole;
 import com.projectv.userapi.appuser.AppUserService;
 
 @Service
@@ -47,7 +47,7 @@ public class RegistrationService {
 		if (request.getPassword().isBlank() || request.getPassword().isEmpty()) {
 			return false;
 		}
-		List<AppUserRole> rolls = Arrays.asList(AppUserRole.values());
+		List<UserRole> rolls = Arrays.asList(UserRole.values());
 		if (!rolls.contains(request.getRoll())) {
 			return false;
 		}
